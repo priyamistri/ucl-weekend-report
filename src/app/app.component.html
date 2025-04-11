@@ -1,5 +1,57 @@
-<!-- src/app/excel-reader/excel-reader.component.html -->
+<!-- Loader Fullscreen Overlay -->
+<div *ngIf="isLoading" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(47, 46, 46, 0.8); display: flex; align-items: center;
+            justify-content: center; z-index: 9999;">
+  <div class="loader"></div>
+</div>
 
-weekend<input type="file" (change)="onFileChange($event)" />
-monday<input type="file" (change)="onFileChange1($event)" />
-<button (click)="onSubmit()">Submit</button>
+<!-- Full-Screen Hero Section with Background -->
+<div
+  style="position: relative; width: 100vw; height: 100vh; overflow: hidden; background: url('https://source.unsplash.com/1600x900/?technology,innovation') no-repeat center center/cover;">
+
+  <!-- Top Nav Bar -->
+  <div
+    style="position: absolute; top: 0; left: 0; width: 100%; padding: 16px 40px; background: #ffffffcc; display: flex; align-items: center; justify-content: flex-start; z-index: 10;">
+
+    <!-- Left side: Logo -->
+    <img src="asu_logo_1.png" alt="Logo" style="height: 80px; margin-right: 12px;" />
+
+    <!-- Centered title -->
+    <div style="position: absolute; left: 50%; transform: translateX(-50%);">
+      <span style="font-weight: bold; font-size: 2rem; color: #8C1D40; white-space: nowrap;">UCL Report</span>
+    </div>
+
+  </div>
+
+  <!-- Centered Upload Form -->
+  <div
+    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 500px; background-color: rgba(255, 255, 255, 0.97); padding: 30px; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.25); text-align: center; font-family: 'Segoe UI', sans-serif;">
+
+    <h2 style="color: #8C1D40; margin-bottom: 25px;">Upload Excel Reports</h2>
+
+    <!-- Weekend Report -->
+    <div style="margin-bottom: 18px; text-align: left;">
+      <label for="weekendFile" style="font-weight: 500; color: #5C0A26;">Weekend Report</label>
+      <input type="file" id="weekendFile" (change)="onFileChange($event)"
+        style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc; margin-top: 6px;" />
+        <small style="display: block; margin-top: 6px; color: #000000; background-color: #FFC627; font-weight: 500;">Make sure you are uploading the correct weekend
+        events file from Astra.</small>
+    </div>
+
+    <!-- Monday Report -->
+    <div style="margin-bottom: 25px; text-align: left;">
+      <label for="mondayFile" style="font-weight: 500; color: #5C0A26;">Monday Report</label>
+      <input type="file" id="mondayFile" (change)="onFileChange1($event)"
+        style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc; margin-top: 6px;" />
+      <small style="display: block; margin-top: 6px; color: #000000; background-color: #FFC627; font-weight: 500;">Make
+        sure you are uploading the correct monday events file from Astra.</small>
+    </div>
+
+    <!-- Submit Button -->
+    <button (click)="onSubmit()"
+      style="padding: 12px 30px; background-color: #FFC627; color: #8C1D40; font-weight: bold; font-size: 1rem; border: none; border-radius: 8px; cursor: pointer;">
+      Submit
+    </button>
+
+  </div>
+</div>
