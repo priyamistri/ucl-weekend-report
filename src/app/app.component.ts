@@ -103,12 +103,12 @@ export class AppComponent {
   }
 
   onSubmit() {
-    this.isLoading = true;
     if (this.weekend.length === 0 || !this.weekend) {
       alert("There is something wrong! Upload weekend report again");
     } else if (this.monday.length === 0 || !this.monday) {
       alert("There is something wrong! Upload monday report again");
     } else {
+      this.isLoading = true;
       const finalJson = this.weekend.map((item1: { [x: string]: any }) => {
         const match = this.monday.find((item2: { [x: string]: any }) =>
           item2['Building / Room'] === item1['Building / Room'] &&
@@ -187,8 +187,8 @@ export class AppComponent {
         }
       });
       setTimeout(() => {
-      this.isLoading = false;  
-      doc.save('Monday Rounds Report.pdf');
+        this.isLoading = false;
+        doc.save('Monday Rounds Report.pdf');
       }, 2000);
     }
   }
