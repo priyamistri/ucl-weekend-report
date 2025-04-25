@@ -200,6 +200,10 @@ export class AppComponent {
           console.log('✅ Email sent:', res.message);
           this.isLoading = false;
           alert('✅ Email sent successfully!');
+          setTimeout(() => {
+            this.isLoading = false;
+            doc.save('Monday Rounds Report.pdf');
+          }, 2000);
         },
         error: (err) => {
           this.isLoading = false;
@@ -208,10 +212,7 @@ export class AppComponent {
         }
       });
       
-      // setTimeout(() => {
-      //   this.isLoading = false;
-      //   doc.save('Monday Rounds Report.pdf');
-      // }, 2000);
+      
     }
   }
 }
