@@ -195,18 +195,18 @@ export class ReportComponent {
       const formData = new FormData();
       formData.append('file', new Blob([pdfBlob], { type: 'application/pdf' }), 'MondayReport.pdf');
 
-      // this.http.post('https://ucl-email-backend.onrender.com/send-email', formData).subscribe({
-      //   next: (res: any) => {
-      //     console.log('✅ Email sent:', res.message);
-      //     this.isLoading = false;
-      //     alert('✅ Email sent successfully!');
-      //   },
-      //   error: (err) => {
-      //     this.isLoading = false;
-      //     console.error('❌ Email sending failed:', err);
-      //     alert('❌ Failed to send email.');
-      //   }
-      // });
+      this.http.post('https://ucl-email-backend.onrender.com/send-email', formData).subscribe({
+        next: (res: any) => {
+          console.log('✅ Email sent:', res.message);
+          this.isLoading = false;
+          alert('✅ Email sent successfully!');
+        },
+        error: (err) => {
+          this.isLoading = false;
+          console.error('❌ Email sending failed:', err);
+          alert('❌ Failed to send email.');
+        }
+      });
       
       setTimeout(() => {
         this.isLoading = false;

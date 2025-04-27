@@ -1,0 +1,98 @@
+.sidebar {
+  background-color: white;
+  width: 260px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #ddd;
+}
+
+.sidebar-header {
+  color: #8C1D40;
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.sidebar-nav a {
+  display: block;
+  padding: 12px 20px;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+  border-left: 4px solid transparent;
+}
+
+.sidebar-nav a:hover {
+  background-color: #f0f0f0;
+  color: #8C1D40;
+}
+
+.sidebar-nav a.active {
+  color: #FFC627;
+  font-weight: bold;
+  border-left: 4px solid #FFC627;
+  background-color: #8C1D40;
+}
+
+.nav-section-title {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #8C1D40;
+  margin: 20px 20px 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+
+/* Responsive: hide sidebar on small screens */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+/* Toggle Button (for mobile) */
+.toggle-btn {
+  display: none;
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  background: #FFC627;
+  color: #8C1D40;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 1.5rem;
+  z-index: 1100;
+  cursor: pointer;
+}
+
+/* Show toggle button on mobile only */
+@media (max-width: 768px) {
+  .toggle-btn {
+    display: block;
+  }
+}
+}
