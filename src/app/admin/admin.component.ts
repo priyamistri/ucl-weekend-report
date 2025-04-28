@@ -4,6 +4,8 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-admin',
@@ -14,7 +16,7 @@ import { HttpClient } from '@angular/common/http';
 export class AdminComponent {
   userForm: FormGroup;
 
-  constructor(private fb: FormBuilder,  private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient) {
     this.userForm = this.fb.group({
       fullName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -25,25 +27,60 @@ export class AdminComponent {
   }
 
   onSubmit() {
-    // if (this.userForm.valid) {
-      const userData = this.userForm.value;
+    console.log(this.userForm.value);
+    const userData = this.userForm.value;
   
-      this.http.post('http://localhost:5000/api/users/register', userData)
-        .subscribe({
-          next: (res) => {
-            console.log('✅ User Registered:', res);
-            alert('✅ User successfully registered!');
-            this.userForm.reset();
-          },
-          error: (err) => {
-            console.error('❌ Registration failed:', err);
-            alert('❌ Failed to register user.');
+    // Email Validation
+    if (!userData.email || !userData.email.includes('@asu.edu')) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error!',
+        text: 'Invalid ASU Email'
+      });
+      this.userForm.reset();
+      return;
+    }
+  
+    // Username Numeric Validation
+    if (!/^\d+$/.test(userData.username)) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error!',
+        text: 'Username must be numeric only.'
+      });
+      this.userForm.reset();
+      return;
+    }
+  
+    // If validations pass, send to backend
+    this.http.post('http://localhost:5000/api/users/register', userData)
+      .subscribe({
+        next: (res: any) => {
+          console.log(res);
+          if (res[0]["Success"] == "0") {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error!',
+              text: res[0].message
+            });
+          } else {
+            Swal.fire({
+              icon: 'success',
+              title: 'Success!',
+              text: res[0].message
+            });
           }
-        });
-  
-    // } else {
-    //   alert('❌ Please fill all fields correctly.');
-    // }
+          this.userForm.reset();
+        },
+        error: (err) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: err
+          });
+        }
+      });
   }
   
+
 }

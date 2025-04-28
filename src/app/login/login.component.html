@@ -1,0 +1,48 @@
+<div class="min-vh-100 d-flex align-items-center justify-content-center bg-light">
+    <div class="card shadow-lg p-5 rounded-4" style="width: 25rem;">
+      
+      <!-- Logo Image -->
+      <div class="text-center mb-4">
+        <img src="asu_logo_1.png" alt="ASU Logo" style="width: 150px; height: auto;">
+    </div>
+  
+      <h2 class="text-center mb-4 fw-bold" style="color: #811331;">LOGIN</h2>
+  
+      <form (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="username" class="form-label fw-semibold" style="color: #811331;">Username</label>
+          <input
+            type="text"
+            class="form-control border-dark-subtle rounded-3"
+            id="username"
+            name="username"
+            [(ngModel)]="username"
+            placeholder="Enter Username"
+            required
+          />
+        </div>
+  
+        <div class="mb-4">
+          <label for="password" class="form-label fw-semibold" style="color: #811331;">Password</label>
+          <input
+            type="password"
+            class="form-control border-dark-subtle rounded-3"
+            id="password"
+            name="password"
+            [(ngModel)]="password"
+            placeholder="Enter Password"
+            required
+          />
+        </div>
+  
+        <button
+          type="submit"
+          class="btn w-100 rounded-3 fw-bold"
+          style="background-color: #FFC107; color: #811331;"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+  

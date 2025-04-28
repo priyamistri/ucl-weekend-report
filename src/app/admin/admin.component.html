@@ -14,8 +14,8 @@
       </div>
   
       <div class="col-md-12">
-        <label class="form-label">Username</label>
-        <input type="text" formControlName="username" class="form-control" placeholder="Enter username">
+        <label class="form-label">10 Digit ASUID</label>
+        <input type="text" formControlName="username" class="form-control" placeholder="Enter ASUID">
       </div>
   
       <div class="col-md-12">
@@ -26,11 +26,13 @@
       <div class="col-md-12">
         <label class="form-label">Role</label>
         <select formControlName="role" class="form-select">
+          <option value="" disabled selected>Select Role</option> <!-- This acts like a placeholder -->
           <option value="Supervisor">Supervisor</option>
           <option value="Admin">Admin</option>
           <option value="Student Worker">Student Worker</option>
         </select>
       </div>
+      
   
       <div class="col-12 text-center mt-3">
         <button type="submit" class="btn btn-success px-5">Register</button>
