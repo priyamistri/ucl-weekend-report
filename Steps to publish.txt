@@ -1,10 +1,24 @@
-Steps to publish backend 
 
-git add index.js
-git commit -m "Update backend logic in index.js"
-git push origin main
+Step to run email functionality locally
+    cd email-backend
+    node index.js
+
+Steps to run sql
+    cd ucl-backend
+    npm start
+
+Steps to publish backend 
+    git add index.js
+    git commit -m "Update backend logic in index.js"
+    git push origin main
 
 steps to publish frontend
-ng build --base-href=/ucl-weekend-report/
-npx angular-cli-ghpages --dir=dist/ucl-weekend-report/browser
+    ng build --base-href=/ucl-weekend-report/
+    npx angular-cli-ghpages --dir=dist/ucl-weekend-report/browser
+
+
+steps to run frontend locally
+    npm i --force
+    ng serve
+
 

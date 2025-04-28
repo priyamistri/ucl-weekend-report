@@ -4,8 +4,8 @@ import { ReportComponent } from './report/report.component';
 import { AdminComponent } from './admin/admin.component';
 
 export const appRoutes: Routes = [
-  { path: '', component: ReportComponent },
-  // { path: 'dashboard', component: DashboardComponent },
+  { path: '', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'report', component: ReportComponent },
-  // { path: 'Admin', component: AdminComponent },
+  { path: 'Admin', component: AdminComponent },
 ];
