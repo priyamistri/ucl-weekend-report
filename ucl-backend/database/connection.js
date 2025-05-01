@@ -15,9 +15,9 @@ const dbSettings = {
 const poolPromise = new sql.ConnectionPool(dbSettings)
   .connect()
   .then(pool => {
-    console.log('✅ Connected to MSSQL');
+    // console.log('✅ Connected to MSSQL');
     return pool;
   })
-  .catch(err => console.log('❌ Database Connection Failed: ', err));
+  .catch(err => // console.log('❌ Database Connection Failed: ', err));
 
 export { sql, poolPromise };

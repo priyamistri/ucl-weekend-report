@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,7 @@ import Swal from 'sweetalert2';
 export class AdminComponent {
   userForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.userForm = this.fb.group({
       fullName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -27,7 +28,7 @@ export class AdminComponent {
   }
 
   onSubmit() {
-    console.log(this.userForm.value);
+    // console.log(this.userForm.value);
     const userData = this.userForm.value;
   
     // Email Validation
@@ -56,7 +57,7 @@ export class AdminComponent {
     this.http.post('http://localhost:5000/api/users/register', userData)
       .subscribe({
         next: (res: any) => {
-          console.log(res);
+          // console.log(res);
           if (res[0]["Success"] == "0") {
             Swal.fire({
               icon: 'error',
@@ -69,8 +70,10 @@ export class AdminComponent {
               title: 'Success!',
               text: res[0].message
             });
+            this.router.navigate(['/userlist']);
           }
           this.userForm.reset();
+
         },
         error: (err) => {
           Swal.fire({

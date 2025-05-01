@@ -35,7 +35,7 @@ export class ReportComponent {
       const worksheet = workbook.Sheets[sheetName];
 
       const jsonData = XLSX.utils.sheet_to_json(worksheet, { defval: '' });
-      console.log("before removing duplicates", jsonData)
+      // console.log("before removing duplicates", jsonData)
       const unique = new Set<string>();
       const filteredData = jsonData.filter((row: any) => {
         const key = `${row['Building / Room']}::${row['Title/Meeting Name']}`;
@@ -44,7 +44,7 @@ export class ReportComponent {
         return true;
       });
       this.weekend = filteredData;
-      console.log('Filtered Unique Data:', this.weekend);
+      // console.log('Filtered Unique Data:', this.weekend);
     };
 
     reader.readAsArrayBuffer(file);
@@ -53,7 +53,7 @@ export class ReportComponent {
 
   onFileChange1(event: any): void {
 
-    console.log("comes here");
+    // console.log("comes here");
     this.monday = [];
     const file = event.target.files[0];
     if (!file) return;
@@ -68,7 +68,7 @@ export class ReportComponent {
       const worksheet = workbook.Sheets[sheetName];
 
       const jsonData = XLSX.utils.sheet_to_json(worksheet, { defval: '' });
-      console.log("before filter", jsonData);
+      // console.log("before filter", jsonData);
       const map = new Map<string, any>();
 
       jsonData.forEach((row: any) => {
@@ -88,7 +88,7 @@ export class ReportComponent {
 
       const filteredData = Array.from(map.values()).map(({ startTime, ...rest }) => rest);
       this.monday = filteredData
-      console.log('Filtered by earliest time:', this.monday);
+      // console.log('Filtered by earliest time:', this.monday);
     };
 
     reader.readAsArrayBuffer(file);
@@ -132,7 +132,7 @@ export class ReportComponent {
       // ✅ Remove the last object
       this.finalMergedData = finalJson.slice(0, -1);
 
-      console.log('Final merged JSON:', this.finalMergedData);
+      // console.log('Final merged JSON:', this.finalMergedData);
 
       if (!this.finalMergedData || this.finalMergedData.length === 0) {
         alert('No data available to export.');
@@ -197,7 +197,7 @@ export class ReportComponent {
 
       this.http.post('https://ucl-email-backend.onrender.com/send-email', formData).subscribe({
         next: (res: any) => {
-          console.log('✅ Email sent:', res.message);
+          // console.log('✅ Email sent:', res.message);
           this.isLoading = false;
           alert('✅ Email sent successfully!');
         },

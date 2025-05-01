@@ -1,7 +1,8 @@
 <div class="layout">
+  <ng-container *ngIf="showNavbar()">
     <app-navbar></app-navbar>
-    <div class="main-content">
-      <router-outlet></router-outlet>
-    </div>
+  </ng-container>
+  <div class="main-content">
+    <router-outlet></router-outlet>
   </div>
-  
+</div>

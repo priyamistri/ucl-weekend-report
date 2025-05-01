@@ -1,0 +1,29 @@
+.badge {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 50%;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .badge-approve {
+    background-color: #28a745; /* Green */
+  }
+  
+  .badge-reject {
+    background-color: #dc3545; /* Red */
+  }
+  .dropdown-item {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .btn-outline-secondary {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
+  

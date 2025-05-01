@@ -1,1 +1,18 @@
-<p>dashboard works!cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc</p>
+<div *ngIf="userData?.fullName" class="card shadow-sm p-4 mt-3"
+    style="border-left: 6px solid #FFC107; background-color: #ffffff;">
+    <h2 style="color: #811331; font-weight: bold;">
+        Welcome, <span style="color: #FFC107;">{{ userData.fullName }}</span>!
+    </h2>
+    <p style="color: #555;">Today is <strong>{{ currentDate }}</strong></p>
+
+    <!-- ✅ Show special message if Thursday -->
+    <div *ngIf="showThursdayMessage" class="mt-3 p-3 rounded"
+        style="background-color: #fff3cd; border-left: 4px solid #FFC107; color: #856404;">
+        📌 It's Thursday today and you should download your <strong>Monday rounds</strong> by visiting the
+        <strong>Reports</strong> tab.
+    </div>
+    <div *ngIf="showThursdayMessage == false" class="mt-3 p-3 rounded"
+        style="background-color: #fff3cd; border-left: 4px solid #811331; color: #811331;">
+        👍 Good luck with your inspactions
+    </div>
+</div>

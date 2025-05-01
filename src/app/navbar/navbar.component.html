@@ -1,22 +1,29 @@
 <nav class="sidebar" [class.open]="isMenuOpen">
-    <div class="sidebar-header">UCL REPORT</div>
+  <div class="text-center mb-4">
+    <img src="asu_logo_1.png" alt="ASU Logo" style="width: 150px; height: auto;">
+</div>
   
     <!-- Section: Overview -->
-    <div class="nav-section-title">OVERVIEW</div>
+    <div class="nav-section-title" *ngIf="Role == 'Admin'">OVERVIEW</div>
     <ul class="sidebar-nav">
-      <li><a routerLink="/dashboard" routerLinkActive="active">📊 Dashboard</a></li>
+      <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
     </ul>
   
     <!-- Section: Admin -->
-    <div class="nav-section-title">ADMIN PANEL</div>
+    <div class="nav-section-title" *ngIf="Role == 'Admin'">ADMIN PANEL</div>
     <ul class="sidebar-nav">
-      <li><a routerLink="/Admin" routerLinkActive="active">User Registration</a></li>
+      <li><a routerLink="/userlist" routerLinkActive="active" *ngIf="Role == 'Admin'">User Registration</a></li>
     </ul>
   
     <!-- Section: Reports -->
     <div class="nav-section-title">REPORTS</div>
     <ul class="sidebar-nav">
-      <li><a routerLink="/report" routerLinkActive="active">📁 Report</a></li>
+      <li><a routerLink="/report" routerLinkActive="active">Report</a></li>
+    </ul>
+  
+    <!-- Section: Reports -->
+    <ul class="sidebar-nav">
+      <li><a routerLink="/" routerLinkActive="active">Log Out</a></li>
     </ul>
   </nav>
   
